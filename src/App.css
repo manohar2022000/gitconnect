@@ -1,25 +1,64 @@
 .site-layout-content {
-  min-height:700px;
-  padding: 24px;
-  background: #fff;
+  min-height:500px;
+  max-height: relative;
 }
- .logo {
+ img {
   float: left;
-  width: 120px;
+  width: 150px;
   height: 31px;
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
 }
 .ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
+  
   margin: 16px 0 16px 24px;
+}
+p{
+  text-align: center;
+  padding:200px;
+}
+.bell{
+  margin-left:40em;
+  color:white;
+  margin-right: 10px;
 }
  .btn{ 
       float:right;
       width:130px;
-      margin: 16px 16px 16px 24px;
-      
-    
+      margin: 16px 16px 16px 0;
   }
+  
+.layout{
+  height:100%;  
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(187, 16, 16, 0.2);
+  width:25%;
+  float:left;
+  margin: 30px 50px 30px 50px;
+  padding :50px;
+  height:130px;
+  text-align: left;
+  font-family: arial;
+  position:relative;
+
+}
 
   @import '~antd/dist/antd.css';
+ 
+  .login-form {
+  max-width: 300px;
+  margin-top: 50px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 30%;
+}
