@@ -1,5 +1,8 @@
 
 import React from 'react';
+import './App.css';
+
+
 
  class Api extends React.Component{
     constructor(props){
@@ -42,6 +45,5 @@ import React from 'react';
         <p>loading..</p>)}
            
     }
-
-}
+} 
 export default Api;

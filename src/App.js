@@ -6,6 +6,7 @@ import Api from "./api";
 import {BellOutlined  
 } from '@ant-design/icons';
 import Logo from './logo.png';
+import Apif from './apif';
 import Form from './functions';
 const { Header, Content, Footer } = Layout;
 class App extends React.Component {
@@ -41,7 +42,7 @@ class App extends React.Component {
                     <Api />
                   </Route>
                   <Route path="/nav2">
-                    <p>News </p>
+                    <Apif />
                   </Route>
                   <Route path="/nav3">
                     <p>Blog</p>
