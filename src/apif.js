@@ -1,29 +1,47 @@
 import React, { useEffect,useState } from 'react';
 import './App.css';
 import axios from 'axios';
-function Apif() {
-    const [item,setItem]=useState([]);
-    useEffect(()=>
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(res=>{
-        setItem(res.data)
-    })
-.catch(err=>{
-    console.log(err)
-})
-    )
+import Modal from 'react-modal';
+import Signup from './register';
 
-    return (
-        <div className="cardspot">
+function Apif() {
+//     const [items,setItems]=useState([]);
+//     useEffect(()=>
+//     axios.get('https://jsonplaceholder.typicode.com/posts')
+//     .then(res=>{
+//         setItems(res.data)
+//     })
+// .catch(err=>{
+//     console.log(err)
+// })
+//     )
+
+//     return (
+//         <div className="cardspot">
           
-        {item.map(item=>(
+//         {items.map(item=>(
           
-          <a href=""><div className="card" >{item.id}.{item.title}</div></a>
+//           <a href="https://www.npmjs.com/package/axios"><div className="card" >{item.id}.{item.title}</div></a>
           
-        ))}
+//         ))}
       
+//     </div>
+//     )
+
+const [open,setOpen]=useState(true);
+
+return(
+    <div ClassName="modal">
+        <button onClick={()=>setOpen(true)}>open modal</button>
+<Modal isOpen={open}>
+    <Signup/>
+    <button onClick={()=>setOpen(false)}>close</button>
+</Modal>
+
     </div>
-    )
+
+)
+
 }
 
 export default Apif;
