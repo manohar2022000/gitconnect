@@ -1,8 +1,6 @@
 import { Form, Input, Button} from 'antd';
 import axios from 'axios';
-import React,{useState,useEffect} from 'react';
-import {Redirect} from 'react-router-dom';
-const login=false;
+import React,{useState} from 'react';
 
 const layout = {
   labelCol: {
@@ -28,14 +26,6 @@ const Demo = () => {
     setLogineduser(props);
     console.log({logineduser});
   }
-  useEffect(()=>{
-    if(login){
-      <Redirect to ="./Applogin"/>
-    }
-
-  })
- 
-
   const onFinish = (values) => {
     axios.post('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/auth/login', {
         email: values.email,
@@ -43,11 +33,9 @@ const Demo = () => {
     })
     .then(function (response) {
       console.log(response.data);
-      window.alert(response.data.message);
+      window.alert(response.data.message)
       setusername(values.email);
-    
-      <Redirect to ="http://localhost:3000/nav2"/>
-      console.log({logineduser});
+      
     })
     .catch(function (error) {
       console.log(error);

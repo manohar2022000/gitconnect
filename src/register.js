@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Form, Input, Button } from 'antd';
-import { useState } from 'react/cjs/react.development';
-import Modal from 'react-modal';
+
 
 const formItemLayout = {
   labelCol: {
@@ -39,7 +38,8 @@ const RegistrationForm = () => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    axios.post('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/auth/signup', {
+    axios.post('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/auth/signup', 
+    {
       username: values.username,
        email: values.email,
        password:values.password,
@@ -107,7 +107,7 @@ const RegistrationForm = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: 'Please input your 8 digit password!',
           },
         ]}
         hasFeedback

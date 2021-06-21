@@ -28,7 +28,9 @@ padding: 50px;
   margin: 16px 0 16px 24px;
 
 }
-
+.btn-signup{
+  background-color:green;
+}
 .ipost{
   
   padding:20px;
