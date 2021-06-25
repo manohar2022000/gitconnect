@@ -1,6 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import axios from 'axios';
 import { Form, Input, Button } from 'antd';
+import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
 
 
 const formItemLayout = {
@@ -9,7 +11,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 9,
+      span: 7,
     },
   },
   wrapperCol: {
@@ -17,7 +19,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 6,
+      span: 11,
     },
   },
 };
@@ -28,15 +30,15 @@ const tailFormItemLayout = {
       offset: 0,
     },
     sm: {
-      span: 16,
-      offset: 11,
+      span: 10,
+      offset: 10,
     },
   },
 };
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
-
+const[register,setRegister]=useState(true);
   const onFinish = (values) => {
     axios.post('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/auth/signup', 
     {
@@ -47,6 +49,7 @@ const RegistrationForm = () => {
    .then(function (response) {
      console.log(response);
      window.alert(response.data.message);
+     setRegister(false);
    })
    .catch(function (error) {
      console.log(error);
@@ -54,6 +57,7 @@ const RegistrationForm = () => {
   };
 
   return (
+    <Modal isOpen={register}>
     <div className="signup">
     {/* <Modal isOpen={true}> */}
     
@@ -142,7 +146,10 @@ const RegistrationForm = () => {
     
       <Form.Item {...tailFormItemLayout}>
       
-        <Button type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit">
+          <Link to="/">Cancel</Link>
+        </Button>
+        <Button type="primary" className="success" htmlType="submit">
           Signup
         </Button>
       </Form.Item>
@@ -150,7 +157,7 @@ const RegistrationForm = () => {
     {/* </Modal>  */}
 
     </div>
-  );
+    </Modal>);
   
 };
 export default RegistrationForm;

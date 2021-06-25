@@ -2,19 +2,29 @@ import React from "react";
 import "./App.css";
 import { Layout, Menu, Button } from "antd";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Logo from './logo.png';
-import {SignupModal,LoginModal} from "./modals";
-import Languages from './languages';
-import Post from './post';
-let clicklink='http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/posts?dateTo=2020-12-31';
-
+import Logo from './more/logo.png';
+import Signup from "./more/register";
+import Login from './more/login';
+import Languages from './more/languages';
+import Post from './more/post';
+import Profileedit from './more/profileedit';
+let clicklink='http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/posts';
+let start='http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/posts/languages';
+// let end='?page=2&limit=1&dateFrom=2000-06-03T17:18:19.907Z';
 const { Header, Content, Footer } = Layout;
+const path=window.location.pathname;
 
-class App extends React.Component{  
-  log=(props)=>{
-    console.log("hi");
-    <LoginModal />
-  }
+window.$login=false;
+let loginbutton;
+if(window.$login){
+loginbutton=<Profileedit/>
+}
+else{
+loginbutton=<Login/>
+}
+class App extends React.Component{
+  
+
   render(){
     return (
       <div className="App">
@@ -35,11 +45,11 @@ class App extends React.Component{
                 <BellOutlined className="bell"/> */}
                
 
-                <Button type="primary" key="4"className="btn btn-signup">
+                <Button type="primary" key="4"className="btn success">
                   <Link to="/register">Signup</Link>
                 </Button>
                  <Button type="primary"key="3" className="btn">
-                  Login
+                  <Link to="/login">Login</Link>
                 </Button>
               </Menu>
             </Header>
@@ -48,16 +58,19 @@ class App extends React.Component{
               <div className="site-layout-content">
                 <Switch>
                   <Route path="/news">
-                  
+                  <Profileedit />
                   </Route>
                   <Route path="/" exact>
                   <Post link={clicklink}/>
                   </Route>
-                  {/* <Route path="/login">
-                    <LoginModal />
-                  </Route> */}
+                  <Route path="/login">
+                    {loginbutton}
+                  </Route> 
                   <Route path="/register">
-                    <SignupModal /> 
+                    <Signup /> 
+                  </Route>
+                  <Route path={path} >
+                    <Post link={start+path} />
                   </Route>
                   
                 </Switch>

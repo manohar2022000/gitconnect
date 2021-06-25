@@ -1,19 +1,21 @@
 import { Form, Input, Button} from 'antd';
 import axios from 'axios';
 import React,{useState} from 'react';
-
+import Modal from 'react-modal';
+import {Link} from "react-router-dom";
+import '../App.css';
 const layout = {
   labelCol: {
-    span: 9,
+    span: 7,
   },
   wrapperCol: {
-    span: 6,
+    span: 10,
   }
 };
 const tailLayout = {
   wrapperCol: {
-    offset: 11,
-    span: 16,
+    offset: 9,
+    span: 10,
 
     
   },
@@ -21,6 +23,7 @@ const tailLayout = {
 
 const Demo = () => {
   const [logineduser,setLogineduser]=useState("");
+  const [open,setOpen]=useState(true);
   function setusername(props)
   {
     setLogineduser(props);
@@ -33,9 +36,10 @@ const Demo = () => {
     })
     .then(function (response) {
       console.log(response.data);
-      window.alert(response.data.message)
+      setOpen(false);
       setusername(values.email);
-      
+      window.$login=true;
+      window.alert(response.data.message)
     })
     .catch(function (error) {
       console.log(error);
@@ -47,7 +51,7 @@ const Demo = () => {
   };
 
   return (
-    
+   <Modal isOpen={open}>
     <Form
       {...layout}
       name="basic"
@@ -88,11 +92,19 @@ const Demo = () => {
         <Input.Password />
       </Form.Item>
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+      <Button type="primary" >
+         <Link to="/">Cancel</Link> 
+        </Button>
+      
+        <Button type="primary" htmlType="submit" className="success">
           Login
         </Button>
+      
       </Form.Item>
+      
     </Form>
+ 
+    </Modal> 
   );
   
 

@@ -28,7 +28,7 @@ padding: 50px;
   margin: 16px 0 16px 24px;
 
 }
-.btn-signup{
+.success{
   background-color:green;
 }
 .ipost{
@@ -38,6 +38,10 @@ padding: 50px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 grey;
 
+}
+.update{
+margin-left:90%;
+margin-top: 40px;
 }
 .ilan{  padding:10px;
   border-width:5px;
