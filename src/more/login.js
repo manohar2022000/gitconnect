@@ -4,6 +4,9 @@ import React,{useState} from 'react';
 import Modal from 'react-modal';
 import {Link} from "react-router-dom";
 import '../App.css';
+import {useDispatch} from 'react-redux';
+import * as userActions from '../store/action/user';
+import store from '../store';
 const layout = {
   labelCol: {
     span: 7,
@@ -22,24 +25,27 @@ const tailLayout = {
 };
 
 const Demo = () => {
-  const [logineduser,setLogineduser]=useState("");
+  const dispatch=useDispatch();
+ 
+ 
   const [open,setOpen]=useState(true);
-  function setusername(props)
-  {
-    setLogineduser(props);
-    console.log({logineduser});
-  }
   const onFinish = (values) => {
     axios.post('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/auth/login', {
         email: values.email,
         password:values.password,
     })
     .then(function (response) {
-      console.log(response.data);
       setOpen(false);
-      setusername(values.email);
-      window.$login=true;
       window.alert(response.data.message)
+      dispatch(userActions.addstatus(true));
+      const state =store.getState();
+      const loggedinstatus=state.islogin;
+      // console.log(dispatch(userActions.addtoken(response.data.data.token)))
+      localStorage.setItem('userid',values.email);
+      localStorage.setItem('token',response.data.data.token);
+      // console.log(localStorage.getItem('token'))
+      console.log(localStorage.getItem('userid'));
+      console.log(loggedinstatus)
     })
     .catch(function (error) {
       console.log(error);
@@ -99,9 +105,7 @@ const Demo = () => {
         <Button type="primary" htmlType="submit" className="success">
           Login
         </Button>
-      
       </Form.Item>
-      
     </Form>
  
     </Modal> 

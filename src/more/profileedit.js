@@ -49,7 +49,7 @@ axios.put('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/users',{
   };
 
   return (
-      <Modal isOpen={update}>
+      // <Modal isOpen={update}>
     <Form
       {...formItemLayout}
       form={form}
@@ -110,7 +110,8 @@ axios.put('http://ec2-13-127-228-126.ap-south-1.compute.amazonaws.com/users',{
       </Form.Item>
      
     </Form>
- </Modal> );
+//  </Modal> 
+ );
 };
 
 export default Profileedit;
